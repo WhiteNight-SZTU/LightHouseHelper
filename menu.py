@@ -39,11 +39,14 @@ class Menu:
     def __snapshot_menu(self):
         print("1.获取快照列表")
         print("2.新建快照")
+        print("3.删除快照")
         print("0.返回上一级")
         choice=input("请输入选项序号：")
         if choice == '1':
             self.__snapshot.get_snapshot_list(self.__client)
         elif choice == '2':
             self.__snapshot.create_snapshot(self.__client)
+        elif choice == '3':
+            self.__snapshot.delete_snapshot(self.__client)
         elif choice == '0':
             return
