@@ -4,7 +4,7 @@ from login import Client
 from menu import Menu 
 
 from lib.snapshot import SnapshotAPI
-
+from lib.instance import InstanceAPI
 def parse():
     parser = argparse.ArgumentParser("LightHosueHelp",description="轻量服务器自动化脚本")
     parser.add_argument("--id",help="密钥ID")
@@ -13,6 +13,7 @@ def parse():
     parser.add_argument("--region",default="ap-guangzhou",help="地域,默认ap-guangzhou")
     parser.add_argument("--debug",default='False',help="调试模式,默认False")
     parser.add_argument("--snapshot",default=None,help="快照模式，默认None，可选delete,create,check")
+    parser.add_argument("--instance",default=None,help="实例模式，默认None，可选check")
     return parser.parse_args()
 
 def main():
@@ -29,6 +30,10 @@ def fast(args,client):
         snapshot_api=SnapshotAPI()
         if args.snapshot == "check":
             snapshot_api.get_snapshot_list(client)
+    if args.instance is not None:
+        instance_api=InstanceAPI()
+        if args.instance == "check":
+            instance_api.get_instance_list(client)
     exit(0)
 if __name__=="__main__":
     main()
