@@ -66,7 +66,7 @@ class SnapshotAPI:
         except Exception as e:
             logger.error('获取实例列表失败')
             logger.error(e)
-        choice=input("请输入实例序号：(输入-1返回)")
+        choice=input("请输入实例序号：(输入-1返回) ")
         if choice == '-1':
             return
         try:
@@ -88,7 +88,7 @@ class SnapshotAPI:
 
     def delete_snapshot(self,client:lighthouse_client.LighthouseClient):
         snapshot_list=self.get_snapshot_list(client)
-        choice=input("请输入快照序号：(输入-1返回)")
+        choice=input("请输入快照序号：(输入-1返回) ")
         if choice == '-1':
             return
         try:

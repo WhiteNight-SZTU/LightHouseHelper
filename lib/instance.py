@@ -26,7 +26,7 @@ class InstanceAPI:
             })
         return instance_list
     
-    def get_instance_list(self,client:lighthouse_client.LighthouseClient):
+    def get_instance_list(self,client:lighthouse_client.LighthouseClient,print_list:False):
         try:
             req=models.DescribeInstancesRequest()
             params={}
@@ -37,6 +37,10 @@ class InstanceAPI:
             logger.error(e)
         instance_list=self.__get_instance_from_resp(resp)
         logger.debug(instance_list)
+        if print_list:
+            for instance in instance_list:
+                print("拥有实例列表：")
+                print("序号：{} 实例ID：{} 实例名称：{} 实例状态：{} 实例CPU：{}核 实例内存：{}G 系统盘：{} 私有IP：{} 公有IP：{} UUID：{} 创建时间：{} 过期时间：{} 操作系统：{} 可用区：{}".format(instance_list.index(instance),instance['InstanceId'],instance['InstanceName'],instance['InstanceState'],instance['CPU'],instance['Memory'],instance['SystemDisk'],instance['PrivateAddresses'],instance['PublicAddresses'],instance['Uuid'],instance['CreatedTime'],instance['ExpiredTime'],instance['OsName'],instance['Zone']))
         return instance_list
 
     

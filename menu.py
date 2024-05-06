@@ -14,7 +14,7 @@ class Menu:
         
     def show_menu(self):
         while True:
-            print("轻量服务器自动化脚本")
+            print("\n轻量服务器自动化脚本")
             print('1.快照')
             print("2.实例")
             print('0.退出')
@@ -31,8 +31,9 @@ class Menu:
         print("1.获取实例列表")
         print("0.返回上一级")
         choice=input("请输入选项序号：")
+        print("\n")
         if choice == '1':
-            self.__instance.get_instance_list(self.__client)
+            self.__instance.get_instance_list(self.__client,print_list=True)
         elif choice == '0':
             return
     
@@ -42,6 +43,7 @@ class Menu:
         print("3.删除快照")
         print("0.返回上一级")
         choice=input("请输入选项序号：")
+        print("\n")
         if choice == '1':
             self.__snapshot.get_snapshot_list(self.__client)
         elif choice == '2':
