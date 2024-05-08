@@ -59,7 +59,7 @@ class SnapshotAPI:
         snapshot_quota=self.get_snapshot_quota(client)
         print('快照配额：{}'.format(snapshot_quota[0].ResourceQuotaTotal)+' 剩余可用数量：{}'.format(snapshot_quota[0].ResourceQuotaAvailable)+' 已使用数量：{}'.format(snapshot_quota[0].ResourceQuotaTotal-snapshot_quota[0].ResourceQuotaAvailable))
         try:
-            available_instance_list=self.__instance.get_instance_list(client)
+            available_instance_list=self.__instance.get_instance_list(client,print_list=False)
             logger.info("获取实例列表成功")
             for ins in available_instance_list:
                 print("序号：{} 实例ID：{} 实例名称：{}".format(available_instance_list.index(ins),ins['InstanceId'],ins['InstanceName']))
